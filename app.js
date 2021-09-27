@@ -41,7 +41,8 @@ wss.on("connection", function connection(ws) {
             );
           });
           wss.broadcast(
-            JSON.stringify({ type: "queryResponse", payload: payload })
+            JSON.stringify({ type: "queryResponse", payload: payload }),
+            ws
           );
           return;
         default:
@@ -82,9 +83,11 @@ let pingInterval = setInterval(() => {
  * @param  {Object} data
  * @void
  */
-wss.broadcast = function broadcast(data) {
+wss.broadcast = function broadcast(data, ws) {
   wss.clients.forEach(function each(client) {
-    client.send(data);
+    if (client !== ws) {
+      client.send(data);
+    }
   });
 };
 
