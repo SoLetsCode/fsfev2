@@ -4,12 +4,16 @@
   "description": "FSFE or something",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon app.js"
   },
   "author": "Jem",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
     "ws": "^7.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }
